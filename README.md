@@ -12,6 +12,7 @@
   - Evaluate the boolean expression against the given JSON object. 
 
 `Sample Input`:
+
 JSON object
 ```  
 {
@@ -53,44 +54,47 @@ Define a grammar that represents the logical expression. My library supports 8 t
  - `Num comparation`: To compare the key value with a number value. The number value could be integer and double
 
 > x > 10
+
 > y <= 0
+
 > height = 175
-...
 
 - `String comparation`: To compare the key value with a string value. The compare value should put inside a single quote. Only supports for operator '=' and '!='
 
 > name = 'Long Nguyen'
+
 > city != 'Saigon'
-...
 
 - `Boolean comparation`: To compare the key value with a boolean value. The valid boolean values are 'TRUE' and 'FALSE' (case insensitive) 
 
 > userIsActive = true
-..
 
 - `Key comparation`: To compare the key value with another key
 
 > x > y
+
 > y = z
+
 > z <= k
-...
 
 - `Array comparation`: To compare the key value with an array. The keyword for this syntax is 'IN' or 'NOT IN' (case insensitive)
 
 > faang IN ('facebook', 'amazon', 'apple', 'netflix', 'google')
+
 > leapYear NOT IN (2017, 2019, 2021, 2022)
 ...
 
 - `NULL comparation`: To check the key value is NULL or not. The keyword for this syntax is 'IS NULL' or 'IS NOT NULL' (case insensitive)
 
 > user IS NULL
+
 > email IS NOT NULL
 ...
 
 - `Regex comparation`: To match the key value with a regular expression. The syntax for this comparation is 'MATCH / NOT MATCH regex("<pattern>"'
 
 > lastname MATCH regex("[A-Z]")
-...
+
 
 - `Mix comparation`: You can actually mix one or more above comparations to make a logical boolean expression. Eg
 
@@ -100,7 +104,13 @@ Define a grammar that represents the logical expression. My library supports 8 t
 
 To validate expression syntax
 
-```
+```java
+String expression = "x > -4 AND ((z <= 10 AND z != 5) OR z = 20)";
+ExpressionSyntaxValidator syntaxValidator = new ExpressionSyntaxValidator();
+ExpressionSyntaxDetails syntaxDetails = syntaxValidator.validate(expression);
+
+boolean isValid = syntaxDetails.isValid();
+String errMsg = syntaxDetails.getError(); // in case the syntax of expression is correct, this value will return an empty string
 ```
 
 To evaluate expression against JSON object
