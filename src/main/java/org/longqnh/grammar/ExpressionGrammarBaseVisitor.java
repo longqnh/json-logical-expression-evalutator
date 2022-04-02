@@ -1,4 +1,5 @@
-// Generated from D:/workspace/json-logical-expression-evalutator/src/main/grammar\ExpressionGrammar.g4 by ANTLR 4.9.1
+package org.longqnh.grammar;
+
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
