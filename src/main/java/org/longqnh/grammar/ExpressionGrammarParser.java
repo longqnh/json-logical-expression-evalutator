@@ -1,5 +1,4 @@
 package org.longqnh.grammar;
-
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -20,8 +19,8 @@ public class ExpressionGrammarParser extends Parser {
 		T__0=1, AND=2, OR=3, NOT=4, TRUE=5, FALSE=6, IN=7, NOT_IN=8, IS=9, IS_NOT=10, 
 		LIKE=11, NOT_LIKE=12, MATCH=13, NOT_MATCH=14, NULL=15, CUSTOM_NUM_LIST=16, 
 		CUSTOM_STRING_LIST=17, GT=18, GE=19, LT=20, LE=21, EQ=22, NEQ=23, LPAREN=24, 
-		RPAREN=25, INTEGER=26, DOUBLE=27, SQUOTE=28, DQUOTE=29, PHRASE=30, QUOTE=31, 
-		IDENTIFIER=32, WS=33;
+		RPAREN=25, LSPAREN=26, RSPAREN=27, INTEGER=28, DOUBLE=29, SQUOTE=30, DQUOTE=31, 
+		PHRASE=32, QUOTE=33, IDENTIFIER=34, WS=35;
 	public static final int
 		RULE_expression = 0, RULE_numComparator = 1, RULE_stringComparator = 2, 
 		RULE_binary = 3, RULE_bool = 4, RULE_decimal = 5, RULE_field = 6, RULE_validList = 7, 
@@ -38,7 +37,7 @@ public class ExpressionGrammarParser extends Parser {
 		return new String[] {
 			null, "'regex'", null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, "'>'", "'>='", "'<'", "'<='", 
-			"'='", "'!='", "'('", "')'", null, null, "'''", "'\"'"
+			"'='", "'!='", "'('", "')'", "'['", "']'", null, null, "'''", "'\"'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -47,8 +46,8 @@ public class ExpressionGrammarParser extends Parser {
 			null, null, "AND", "OR", "NOT", "TRUE", "FALSE", "IN", "NOT_IN", "IS", 
 			"IS_NOT", "LIKE", "NOT_LIKE", "MATCH", "NOT_MATCH", "NULL", "CUSTOM_NUM_LIST", 
 			"CUSTOM_STRING_LIST", "GT", "GE", "LT", "LE", "EQ", "NEQ", "LPAREN", 
-			"RPAREN", "INTEGER", "DOUBLE", "SQUOTE", "DQUOTE", "PHRASE", "QUOTE", 
-			"IDENTIFIER", "WS"
+			"RPAREN", "LSPAREN", "RSPAREN", "INTEGER", "DOUBLE", "SQUOTE", "DQUOTE", 
+			"PHRASE", "QUOTE", "IDENTIFIER", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -1201,7 +1200,7 @@ public class ExpressionGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#o\4\2\t\2\4\3\t\3"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%o\4\2\t\2\4\3\t\3"+
 		"\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f"+
 		"\t\f\4\r\t\r\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3"+
 		"\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2"+
@@ -1209,7 +1208,7 @@ public class ExpressionGrammarParser extends Parser {
 		"\3\2\3\2\7\2N\n\2\f\2\16\2Q\13\2\3\3\3\3\3\4\3\4\3\5\3\5\3\6\3\6\3\7\3"+
 		"\7\3\b\3\b\3\t\3\t\3\t\5\tb\n\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3\r"+
 		"\3\r\3\r\3\r\2\3\2\16\2\4\6\b\n\f\16\20\22\24\26\30\2\7\3\2\24\31\3\2"+
-		"\30\31\3\2\4\5\3\2\7\b\3\2\34\35\2o\2G\3\2\2\2\4R\3\2\2\2\6T\3\2\2\2\b"+
+		"\30\31\3\2\4\5\3\2\7\b\3\2\36\37\2o\2G\3\2\2\2\4R\3\2\2\2\6T\3\2\2\2\b"+
 		"V\3\2\2\2\nX\3\2\2\2\fZ\3\2\2\2\16\\\3\2\2\2\20a\3\2\2\2\22c\3\2\2\2\24"+
 		"e\3\2\2\2\26g\3\2\2\2\30i\3\2\2\2\32\33\b\2\1\2\33\34\7\32\2\2\34\35\5"+
 		"\2\2\2\35\36\7\33\2\2\36H\3\2\2\2\37 \5\16\b\2 !\5\4\3\2!\"\5\16\b\2\""+
@@ -1223,11 +1222,11 @@ public class ExpressionGrammarParser extends Parser {
 		"\3\2\2\2G\67\3\2\2\2G;\3\2\2\2G?\3\2\2\2GC\3\2\2\2HO\3\2\2\2IJ\f\r\2\2"+
 		"JK\5\b\5\2KL\5\2\2\16LN\3\2\2\2MI\3\2\2\2NQ\3\2\2\2OM\3\2\2\2OP\3\2\2"+
 		"\2P\3\3\2\2\2QO\3\2\2\2RS\t\2\2\2S\5\3\2\2\2TU\t\3\2\2U\7\3\2\2\2VW\t"+
-		"\4\2\2W\t\3\2\2\2XY\t\5\2\2Y\13\3\2\2\2Z[\t\6\2\2[\r\3\2\2\2\\]\7\"\2"+
-		"\2]\17\3\2\2\2^b\5\26\f\2_b\7\23\2\2`b\7\22\2\2a^\3\2\2\2a_\3\2\2\2a`"+
-		"\3\2\2\2b\21\3\2\2\2cd\7\21\2\2d\23\3\2\2\2ef\7 \2\2f\25\3\2\2\2gh\7!"+
-		"\2\2h\27\3\2\2\2ij\7\3\2\2jk\7\32\2\2kl\5\26\f\2lm\7\33\2\2m\31\3\2\2"+
-		"\2\5GOa";
+		"\4\2\2W\t\3\2\2\2XY\t\5\2\2Y\13\3\2\2\2Z[\t\6\2\2[\r\3\2\2\2\\]\7$\2\2"+
+		"]\17\3\2\2\2^b\5\26\f\2_b\7\23\2\2`b\7\22\2\2a^\3\2\2\2a_\3\2\2\2a`\3"+
+		"\2\2\2b\21\3\2\2\2cd\7\21\2\2d\23\3\2\2\2ef\7\"\2\2f\25\3\2\2\2gh\7#\2"+
+		"\2h\27\3\2\2\2ij\7\3\2\2jk\7\32\2\2kl\5\26\f\2lm\7\33\2\2m\31\3\2\2\2"+
+		"\5GOa";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

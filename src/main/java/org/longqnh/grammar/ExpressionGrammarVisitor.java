@@ -1,5 +1,4 @@
 package org.longqnh.grammar;
-
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
